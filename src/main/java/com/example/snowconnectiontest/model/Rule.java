@@ -1,25 +1,31 @@
 package com.example.snowconnectiontest.model;
 
+import org.springframework.boot.context.properties.bind.Name;
+
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name="rule")
+@Table(name = "rule")
 public class Rule {
     @Id
     private String ruleId;
+
+    // @Column(name="rule_name")
     private String ruleName;
+
     private String ruleDesc;
 
     public Rule() {
-
     }
 
     public Rule(String ruleId, String ruleName, String ruleDesc) {
         this.ruleId = ruleId;
         this.ruleName = ruleName;
         this.ruleDesc = ruleDesc;
+
     }
 
     public String getRuleId() {
@@ -46,12 +52,4 @@ public class Rule {
         this.ruleDesc = ruleDesc;
     }
 
-    @Override
-    public String toString() {
-        return "Rule{" +
-                "ruleId='" + ruleId + '\'' +
-                ", ruleName='" + ruleName + '\'' +
-                ", ruleDesc='" + ruleDesc + '\'' +
-                '}';
-    }
 }
