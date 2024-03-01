@@ -16,23 +16,20 @@ public class DataSourceConfiguration {
     @Autowired
     private Environment env;
 
-    @Autowired
-    private PrivateKeyReader keyReader;
-
-
     @Bean
     public DataSource dataSource() throws Exception {
 
-        //add private key to properties
+        // add private key to properties
         Properties prop = new Properties();
-        prop.put("privateKey", keyReader.get(env.getProperty("snowflake.auth.key.path"),env.getProperty("snowflake.auth.key.passphrase")));
+        prop.put("privateKey", PrivateKeyReader.get(env.getProperty("snowflake.auth.key.path"),
+                env.getProperty("snowflake.auth.key.passphrase")));
 
-       //prepare a datasource
+        // prepare a datasource
         final DriverManagerDataSource dataSource = new DriverManagerDataSource();
         dataSource.setDriverClassName(env.getProperty("spring.datasource.driverClassName"));
         dataSource.setUrl(env.getProperty("spring.datasource.url"));
         dataSource.setUsername(env.getProperty("spring.datasource.username"));
-        //dataSource.setPassword(env.getProperty("spring.datasource.password"));
+        // dataSource.setPassword(env.getProperty("spring.datasource.password"));
         dataSource.setConnectionProperties(prop);
 
         return dataSource;
