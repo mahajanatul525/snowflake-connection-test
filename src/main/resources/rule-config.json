@@ -1,0 +1,25 @@
+[
+    {
+        "ruleId":"1",
+        "ruleName":"myrule",
+        "pages":[
+            {
+                "name":"PAGE_NAME",
+                "action":"action",
+                "storeProc":{
+                    "name": "get_rules",
+                    "params":[
+                        {
+                            "name":"table_name",
+                            "type": "varchar",
+                            "ruquired":false
+                        }
+                    ]
+                }
+                     
+                
+            }
+        ]
+
+    }
+]

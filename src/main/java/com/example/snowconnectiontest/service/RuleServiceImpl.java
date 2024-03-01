@@ -16,6 +16,13 @@ public class RuleServiceImpl implements IRuleService {
 
     @Override
     public void SaveRule(Rule rule) {
+
+        //logic to apply berore inserting any record. 
+
+        if(rule.getRuleId() != null){
+
+        }
+
         repo.save(rule);
     }
 
